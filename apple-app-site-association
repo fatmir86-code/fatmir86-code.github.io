@@ -1,0 +1,26 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "68HNV4TJ9B.com.fatmir.lajme",
+        "appIDs": ["68HNV4TJ9B.com.fatmir.lajme"],
+        "paths": ["/a", "/a/", "/a/*"],
+        "components": [
+          {
+            "/": "/a",
+            "comment": "Lajme article share landing"
+          },
+          {
+            "/": "/a/",
+            "comment": "Lajme article share landing (with trailing slash)"
+          },
+          {
+            "/": "/a/*",
+            "comment": "Lajme article share landing with params"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Lajme</title>
+  <meta property="og:title" content="Lajme — Lajmet shqip">
+  <meta property="og:description" content="Aplikacioni qe mbledh lajmet shqip nga 30+ burime ne nje vend te vetem.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://apps.apple.com/app/id6762101297">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <style>
+    :root {
+      --bg: #fbfaf7;
+      --text: #1a1a1a;
+      --muted: #6e6e73;
+      --separator: #e5e5ea;
+      --accent: #000;
+      --card: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1e;
+        --text: #f2f2f7;
+        --muted: #8e8e93;
+        --separator: #38383a;
+        --accent: #ffffff;
+        --card: #2c2c2e;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html, body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 48px 24px 32px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font: 700 30px/1 "New York", "Georgia", serif;
+      margin-bottom: 28px;
+    }
+    .source {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-family: "New York", "Georgia", serif;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 36px;
+    }
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 15px 20px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.1s ease;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+    }
+    .btn-secondary {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--separator);
+    }
+    .footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--separator); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">L</div>
+    <div class="source" id="source">LAJME</div>
+    <h1 id="title">Lajmet shqip ne nje vend</h1>
+    <div class="actions">
+      <a class="btn btn-primary" id="open-article" href="https://apps.apple.com/app/id6762101297">Lexo artikullin</a>
+      <a class="btn btn-secondary" href="https://apps.apple.com/app/id6762101297">Shkarko Lajme</a>
+    </div>
+    <div class="footer">
+      Nje aplikacion qe mbledh lajmet shqip nga 30+ burime.<br>
+      <a href="https://apps.apple.com/app/id6762101297">Shkarko per iPhone</a>
+    </div>
+  </div>
+
+  <script>
+    // Parse share URL params: u = article URL, t = title, s = source name
+    // Example: /a/?u=https%3A%2F%2F...&t=Titel&s=Telegrafi
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var url = params.get('u');
+      var title = params.get('t');
+      var source = params.get('s');
+
+      if (title) {
+        document.getElementById('title').textContent = title;
+        document.title = title + ' — Lajme';
+      }
+      if (source) {
+        document.getElementById('source').textContent = source.toUpperCase();
+      }
+      if (url && /^https?:\/\//i.test(url)) {
+        var a = document.getElementById('open-article');
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      }
+    })();
+  </script>
+</body>
+</html>
